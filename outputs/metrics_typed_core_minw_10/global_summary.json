@@ -1,0 +1,28 @@
+{
+  "n_nodes_processed": 53987,
+  "n_edges_processed": 591834,
+  "n_typed_segments": 53987,
+  "total_synapse_weight": 11433312.0,
+  "node_metric_rows": 41520,
+  "sum_delta_H_node_bits": 120098.95063309757,
+  "mean_delta_H_node_bits": 2.892556614477302,
+  "median_delta_H_node_bits": 2.684569628501025,
+  "block_channel": {
+    "status": "ok",
+    "group_col": "type",
+    "total_typed_weight": 11433312.0,
+    "n_src_types": 632,
+    "n_dst_types": 733,
+    "H_src_type_bits": 6.81972260360493,
+    "H_dst_type_bits": 7.5873446274475445,
+    "H_src_type_given_dst_type_bits": 2.669397202485161,
+    "H_dst_type_given_src_type_bits": 3.4370192263277755,
+    "mutual_information_bits": 4.150325401119769,
+    "compression_bits": 2.669397202485161,
+    "history_ambiguity_bits": 2.669397202485161,
+    "effective_preimage_size": 6.361633249988902,
+    "landauer_floor_kT": 1.8502851446971949,
+    "landauer_floor_J_room_temp": 7.663783004223113e-21
+  },
+  "scientific_guardrail": "Main reported quantity is cell-type history ambiguity. Node-level Landauer quantities remain lower-bound proxy scales only."
+}

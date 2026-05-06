@@ -1,0 +1,49 @@
+{
+  "edges": "outputs/processed_typed_core/edges.parquet",
+  "nodes": "outputs/processed_typed_core/nodes.parquet",
+  "out_dir": "outputs/rule_discovery",
+  "pathway": "medulla_to_lobula_plate",
+  "task": "motion_direction",
+  "matched_nodes": 1500,
+  "matched_edges": 12000,
+  "n_samples": 2000,
+  "epochs": 20,
+  "discovery_seeds": [
+    0,
+    1,
+    2
+  ],
+  "discovery_subgraph_samples": [
+    0,
+    1
+  ],
+  "conditions": [
+    "real",
+    "degree_preserving_null",
+    "weight_shuffled_real_topology",
+    "uniform_weight_real_topology"
+  ],
+  "rules": [
+    "no_plasticity",
+    "hebbian",
+    "reward_hebbian",
+    "oja",
+    "reward_oja",
+    "bcm",
+    "reward_bcm",
+    "ambiguity_gated_hebbian",
+    "ambiguity_gated_oja",
+    "energy_normalized_ambiguity_oja"
+  ],
+  "protocols": [
+    "online_readout",
+    "representation_probe"
+  ],
+  "run_symbolic_search": true,
+  "max_symbolic_rules": 20,
+  "readout_lr": 0.03,
+  "plasticity_lr": 0.001,
+  "decay": 0.0001,
+  "noise": 0.25,
+  "seed": 42
+}

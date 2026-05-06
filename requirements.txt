@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+networkx
+pyarrow
+scikit-learn
+matplotlib
+seaborn
+tqdm
+joblib
+numba
+pytest

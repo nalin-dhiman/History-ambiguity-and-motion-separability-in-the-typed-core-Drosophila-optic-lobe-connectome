@@ -1,0 +1,4 @@
+group,group_kind,n_edges,total_weight,n_src_types,n_dst_types,history_ambiguity_bits,mutual_information_bits,effective_preimage_size,status
+T4_T5_related,pathway,853740,3800967.0,246,270,2.6724017490556644,1.889617654574657,6.37489574816274,ok
+lamina_medulla_intrinsic_L1_L2_L3_Mi_Tm_TmY,pathway,4191209,16919463.0,713,743,3.870188552678119,2.662140830542281,14.623214256222482,ok
+projection_output_LC_LPLC_DN_LT,pathway,821384,3192933.0,691,721,4.6284932614057475,2.3459431358679392,24.735193173793338,ok

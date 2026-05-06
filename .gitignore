@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs and build products
+*.log
+logs.txt
+*.aux
+*.out
+*.bbl
+*.blg
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Manuscript/submission sources are intentionally not part of this repo
+*.tex
+*.zip
+paper/
+network_neuroscience_submission_package/
+Structured_history_*submission_package*/
+dump/
+
+# Heavy/generated graph artifacts
+optic-lobe-v1.1-neuprint-tables/
+outputs/processed/
+outputs/processed_typed_core/
+outputs/processed*/edges.parquet
+outputs/processed*/nodes.parquet
+outputs/metrics/node_irreversibility.csv
+outputs/metrics_typed_core/node_irreversibility.csv
+outputs/metrics_typed_core_minw_*/node_irreversibility.csv
+
+# Keep committed figures as PDFs; avoid duplicate raster exports by default
+*.png

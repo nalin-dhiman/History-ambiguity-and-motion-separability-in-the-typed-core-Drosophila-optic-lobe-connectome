@@ -1,0 +1,2 @@
+subgraph_samples,nodes_mean,nodes_min,nodes_max,edges_mean,edges_min,edges_max,exploratory_any
+5,1499.4,1498,1500,12000.0,12000,12000,True

@@ -1,0 +1,4 @@
+{
+  "validation_skipped": true,
+  "reason": "Discovery did not beat no_plasticity/readout-only in the representation-probe protocol; validation would waste compute."
+}

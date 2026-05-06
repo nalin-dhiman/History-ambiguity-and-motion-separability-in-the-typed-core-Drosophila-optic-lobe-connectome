@@ -1,0 +1,4 @@
+pathway,sample_id,requested_matched_nodes,requested_matched_edges,candidate_nodes,candidate_edges,matched_nodes_reached,matched_edges_reached,exploratory,subgraph_n_nodes,subgraph_n_edges,n_source_nodes,n_target_nodes,history_ambiguity_bits,mutual_information_bits,effective_preimage_size
+medulla_to_lobula_plate,0,500,3000,14222,502952,False,True,True,480,3000,434,78,1.0537927972462335,0.5390537494717993,2.0759803632129468
+medulla_to_lobula_plate,1,500,3000,14222,502952,False,True,True,480,3000,437,60,1.0500447148318375,0.6043165651896407,2.0705940225957526
+medulla_to_lobula_plate,2,500,3000,14222,502952,False,True,True,483,3000,379,121,1.040506233152798,0.6036056423122931,2.0569492980311193
