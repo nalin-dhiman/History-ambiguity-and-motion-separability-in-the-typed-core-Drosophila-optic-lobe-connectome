@@ -1,0 +1,24 @@
+{
+  "analysis_stage": "development",
+  "support_rule": {
+    "minimum_target_bodies": 20,
+    "minimum_retained_contacts": 1000
+  },
+  "fixed_margin_null": {
+    "draws": 199,
+    "seed": 27092026,
+    "method": "scipy.stats.random_table Patefield",
+    "margins": "source-type contact totals and target-body contact totals within each target type",
+    "structural_zeros": false,
+    "interpretation": "conditional contact-allocation reference, not biological replication"
+  },
+  "input_count_matching": {
+    "contacts_per_body": 50,
+    "draws": 32,
+    "seed": 27272026,
+    "eligible": "body input >= 50; target type has >=20 eligible bodies",
+    "sampling": "multivariate hypergeometric without replacement within body"
+  },
+  "body_status_sensitivity": "both endpoints status Traced, separately both endpoints statusLabel Roughly traced",
+  "no_confirmatory_p_values": true
+}

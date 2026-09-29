@@ -1,139 +1,52 @@
-# A cell-type channel architecture for history ambiguity and embedded motion separability
+# Typed connectome analysis workflows
 
-Clean analysis repository for the typed-core Drosophila optic-lobe connectome study. The code treats the typed connectome as a weighted source-to-target cell-type channel, computes history ambiguity \(H(S\mid D)\), evaluates null models and taxonomy/ROI sensitivity, and runs synthetic motion-separability and plasticity-rule controls.
+Python tools for weighted cell-type channels, body-resolved input composition, sampling controls, matched-connectome comparison and spatial conditioning. This branch adds the `analysis_pipeline/` runner while retaining the existing package and scripts.
 
-This repository intentionally does **not** include the manuscript LaTeX, supplementary LaTeX, submission-package zips, LaTeX build files, or heavyweight processed graph exports. It does include the analysis pipeline, tests, compact result tables, and publication-ready PDF figures.
+## Install and test
 
-## Repository Layout
-
-```text
-thermodynamic_connectomics/   Core Python package
-scripts/                      Pipeline, controls, and figure-generation scripts
-tests/                        Unit tests for entropy, nulls, ROI parsing, and learning controls
-outputs/tables/               Compact final CSV summary tables
-outputs/*/                    Selected lightweight derived result tables
-figures/main/                 Main publication figures as PDFs
-figures/supplementary/        Supplementary figures as PDFs
-run_optic_lobe_pipeline.sh    End-to-end core analysis runner
-requirements.txt              Python dependency list
-environment.yml               Conda environment
-```
-
-## What Is Excluded
-
-The raw neuPrint export and generated processed edge/node tables are not committed. They are large and should be regenerated locally from the source optic-lobe v1.1 neuPrint tables.
-
-Excluded generated/heavy artifacts include:
-
-- `outputs/processed*/edges.parquet`
-- `outputs/processed*/nodes.parquet`
-- large node-level metric CSVs
-- manuscript and supplement `.tex` files
-- LaTeX auxiliary/build files
-- submission zips
-- Python caches and test caches
-
-The included compact CSVs and PDFs are sufficient to inspect the reported results and figures without rebuilding the full graph pipeline.
-
-## Install
-
-Using `pip`:
+Python 3.12 is the tested environment. From the repository root:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt -r analysis_pipeline/requirements-lock.txt
+python analysis_pipeline/run.py --stage test
 ```
 
-Using `conda`:
+The new test suite uses small synthetic fixtures and does not require external connectomes. Existing optional-dependency tests may skip when their dependency is unavailable.
+
+## New pipeline
+
+See [the pipeline guide](analysis_pipeline/README.md) for input setup, stage order, file schemas and numerical checks.
 
 ```bash
-conda env create -f environment.yml
-conda activate thermodynamic-connectomics
+python analysis_pipeline/run.py --stage all --dry-run
+python analysis_pipeline/prepare_inputs.py --male-export /path/to/optic-lobe-v1.1-neuprint-tables --female-dir /path/to/female_fruitfly
+python analysis_pipeline/cross_specimen/scripts/acquire_annotations.py
+python analysis_pipeline/run.py --stage all
 ```
 
-## Data Input
+Alternatively, `prepare_inputs.py --numeric-archive /path/to/local/numerical/archive` stages an explicit allowlist of numerical inputs from an existing local archive. It does not copy entire directories.
 
-Place the optic-lobe v1.1 neuPrint table export at:
+The default numerical workflow includes complete-input decomposition, weighting and sampling controls, type correspondence, count-matched and exact-margin references, spatially blocked prediction, conditional spatial references, validation and local diagnostic charts. Optional model and static-calibration stages are selected separately. Commands stop on failed input checks or numerical assertions and record their execution locally.
 
-```text
-optic-lobe-v1.1-neuprint-tables/
-```
+## Repository layout
 
-The preparation script expects the local export schema used by the analysis pipeline. The repository does not redistribute the raw connectome export.
+| Path | Purpose |
+|---|---|
+| `analysis_pipeline/run.py` | Dependency-aware runner and dry-run command listing |
+| `analysis_pipeline/prepare_inputs.py` | Local numerical input staging and schema checks |
+| `analysis_pipeline/core/` | Body/type decomposition, reference and sampling algorithms |
+| `analysis_pipeline/cross_specimen/` | Literal type matching, spatial partition and held-out prediction |
+| `analysis_pipeline/diagnostics/` | Numerical helpers for optional static calibration |
+| `analysis_pipeline/tests/` | Runner and input-staging tests |
+| `thermodynamic_connectomics/`, `scripts/`, `tests/` | Established package, entry points and tests |
+| `analysis_pipeline/ci/analysis-tests.yml.example` | CI template for tests without external datasets |
 
-## Run the Core Pipeline
+## Existing entry points
 
-```bash
-bash run_optic_lobe_pipeline.sh
-```
+`bash run_optic_lobe_pipeline.sh` remains available for the established type-channel workflows. It reads the local neuPrint table export and writes processed inputs and analyses under `outputs/`. Its environment controls include `N_NULLS`, `ROI_PATHWAY_N_NULLS` and `KNOWN_PATHWAY_N_NULLS`. Existing tracked outputs and figures are retained as historical artifacts; the new workflow writes to separate, ignored runtime directories.
 
-The runner performs:
+## Local artifacts
 
-1. full and typed-core graph preparation;
-2. weighted history-ambiguity and mutual-information metrics;
-3. degree-preserving/type-label null summaries;
-4. ROI and visual-pathway analyses;
-5. known-pathway validation;
-6. core diagnostic figures and report tables.
-
-Null sizes can be adjusted for local compute:
-
-```bash
-N_NULLS=20 ROI_PATHWAY_N_NULLS=10 KNOWN_PATHWAY_N_NULLS=10 bash run_optic_lobe_pipeline.sh
-```
-
-## Reviewer Controls and Final Figures
-
-After the core pipeline has produced `outputs/processed_typed_core/`, run:
-
-```bash
-python scripts/18_reviewer_sensitivity_controls.py
-python scripts/19_reviewer_revision_controls.py
-python scripts/22_make_nature_level_figures.py
-python scripts/23_make_connectome_backbone_network.py
-python scripts/24_make_supplement_anatomical_projection.py
-```
-
-These scripts regenerate the final reviewer-facing tables and PDF figures, including:
-
-- pathway and ROI history-ambiguity hierarchy figures;
-- null-model and taxonomy/ROI sensitivity figures;
-- synthetic motion separability controls;
-- plasticity-rule negative-control figures;
-- neuron-level connectome backbone visualization;
-- anatomical-style ROI projection of optic-lobe fan-in to descending targets.
-
-## Tests
-
-```bash
-pytest
-```
-
-The tests cover entropy/channel calculations, small-graph null behavior, ROI parsing, learning metrics, synthetic task helpers, local rules, and rule-search utilities.
-
-## Scientific Scope
-
-The supported claims are intentionally conservative:
-
-- \(H(S\mid D)\) is a weighted anatomical cell-type channel statistic.
-- The optic-lobe typed-core graph shows a structured hierarchy of source-history specificity and pooling.
-- The synthetic medulla-to-lobula-plate motion probe supports representation separability under defined controls.
-- The tested local plasticity rules do not improve representation beyond readout-only controls.
-
-The repository does **not** claim measured thermodynamic cost, heat dissipation, biological channel capacity, or discovery of a general biological learning rule.
-
-## Key Outputs
-
-Useful entry points:
-
-- `outputs/tables/final_master_claim_table.csv`
-- `outputs/tables/authoritative_channel_metrics_with_ci.csv`
-- `outputs/tables/pathway_comparison_table.csv`
-- `outputs/tables/motion_probe_reviewer_control_summary.csv`
-- `figures/main/fig6_connectome_backbone_network.pdf`
-- `figures/supplementary/sfig19_anatomical_projection_target_fanin.pdf`
-
-## Reproducibility Note
-
-The PDF figures committed here were generated from the local processed typed-core graph and compact result tables. Figures that look anatomically spatial but are based on graph/ROI placement are labeled as projections, not physical soma/skeleton reconstructions.
+Raw datasets, generated results, local run logs, new figures and document/submission materials are excluded from this code update. The pipeline generates numerical outputs on the user's machine. Public input URLs and hashes identify the annotation snapshots required for reproducibility. See [data attribution](analysis_pipeline/DATA_SOURCES.md) for source releases and terms.

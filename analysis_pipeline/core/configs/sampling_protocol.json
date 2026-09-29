@@ -1,0 +1,17 @@
+{
+  "stage": "development",
+  "fractions": [
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    0.6
+  ],
+  "draws": 8,
+  "seed": 28092026,
+  "methods": [
+    "uniform_edge_rows",
+    "uniform_target_bodies_complete_inputs"
+  ],
+  "sampling": "without replacement; retain weights of selected edges"
+}
