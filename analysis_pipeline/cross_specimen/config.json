@@ -1,0 +1,29 @@
+{
+  "base_seed": 20260929,
+  "fixed_margin_draws": 199,
+  "count_matched_draws": 32,
+  "contacts_per_body": 50,
+  "support_bodies": 20,
+  "support_contacts": 1000,
+  "spatial_primary_width": 5,
+  "spatial_other_widths": [
+    3,
+    10
+  ],
+  "spatial_shift": [
+    2,
+    2
+  ],
+  "predictive_folds": 5,
+  "predictive_bandwidth": 5,
+  "predictive_prior_contacts": 100,
+  "predictive_pseudocount": 0.5,
+  "predictive_buffer_steps": 1,
+  "spatial_support_bodies": 100,
+  "spatial_support_contacts": 1000,
+  "edge_thresholds": [
+    3,
+    5,
+    10
+  ]
+}

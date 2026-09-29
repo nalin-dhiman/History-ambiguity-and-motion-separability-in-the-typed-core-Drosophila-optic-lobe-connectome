@@ -44,3 +44,35 @@ outputs/metrics_typed_core_minw_*/node_irreversibility.csv
 
 # Keep committed figures as PDFs; avoid duplicate raster exports by default
 *.png
+
+# Local inputs, generated analyses and publication materials for the added pipeline
+analysis_pipeline/core/data_external/
+analysis_pipeline/core/results/
+analysis_pipeline/core/audit/
+analysis_pipeline/core/provenance/
+analysis_pipeline/cross_specimen/data_external/
+analysis_pipeline/cross_specimen/results/
+analysis_pipeline/cross_specimen/provenance/
+analysis_pipeline/diagnostics/data/
+analysis_pipeline/figures/
+analysis_pipeline/runs/
+female_fruitfly/
+*.feather
+*.parquet
+*.npy
+*.bib
+*.docx
+*.synctex.gz
+*cover_letter*
+*manuscript*
+extended_submission/
+polished_submission/
+cross_specimen_extension/
+# Document exports and local editorial records
+main.pdf
+supplement.pdf
+supplementary_information.pdf
+SCIENTIFIC_EXTENSION_REPORT.md
+VALIDATION_REPORT.md
+CITATION_AUDIT.md
+CLAIM_PRESERVATION.md

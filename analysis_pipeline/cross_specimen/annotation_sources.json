@@ -1,0 +1,32 @@
+[
+  {
+    "file": "female_neuron_table.csv",
+    "url": "https://raw.githubusercontent.com/murthylab/visual-system-parts-list/0d8574d46627ce7fadd968a3c5d602e837325373/data/neuron_table.csv",
+    "sha256": "8d1de464db0ce17906d5c224d6c1c0db7d4d43259be58a82a8393842d10e4e28"
+  },
+  {
+    "file": "female_data_README.md",
+    "url": "https://raw.githubusercontent.com/murthylab/visual-system-parts-list/0d8574d46627ce7fadd968a3c5d602e837325373/data/README.md",
+    "sha256": "28dcaf0cd180b17696b6a73fb07c012118a0902bdb83a07c84a0fa888db652f3"
+  },
+  {
+    "file": "female_annotation_LICENSE",
+    "url": "https://raw.githubusercontent.com/murthylab/visual-system-parts-list/0d8574d46627ce7fadd968a3c5d602e837325373/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  },
+  {
+    "file": "male_coordinate_systems.md",
+    "url": "https://raw.githubusercontent.com/reiserlab/male-drosophila-visual-system-connectome-code/dbafc73124b5c96e96429cdf2a89d067cae841bc/docs/coordinate-systems.md",
+    "sha256": "d88398773d1ae7b883e0ce1cbf074408ad342c78fa65a4b00915a25f66889c0e"
+  },
+  {
+    "file": "female_column_assignment.csv.gz",
+    "url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/column_assignment.csv.gz",
+    "sha256": "bdf4ce7f62cc63493d53eefad3816ff2dfd08b190e97b35a492e0e453df2f0f6"
+  },
+  {
+    "file": "Nern2025_supplementary_tables.zip",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-025-08746-0/MediaObjects/41586_2025_8746_MOESM4_ESM.zip",
+    "sha256": "ef34f64c74e157fdec06312e3a1d6e567ae48a383944dd99a3f854e7ba593c93"
+  }
+]

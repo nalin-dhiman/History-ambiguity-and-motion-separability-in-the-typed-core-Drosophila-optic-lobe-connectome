@@ -1,0 +1,41 @@
+{
+  "task": "archived four-class source-type template generator, no temporal motion",
+  "graphs": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "samples": 2000,
+  "test_fraction": 0.35,
+  "noise": 0.25,
+  "development_seed_base": 10000,
+  "confirmation_seed_base": 810000,
+  "conditions": [
+    "source",
+    "real",
+    "source_assignment_shuffle",
+    "configuration",
+    "weight_shuffle",
+    "uniform"
+  ],
+  "graph_seed_base": 270900,
+  "solver": "lbfgs",
+  "max_iter": 2000,
+  "tolerance": 1e-08,
+  "C_grid": [
+    0.01,
+    0.1,
+    1,
+    10
+  ],
+  "CV": "three stratified training folds; select minimum mean validation log loss",
+  "profiles": [
+    "unscaled_C1",
+    "scaled_C1",
+    "scaled_trainCV"
+  ],
+  "primary_profile": "scaled_trainCV",
+  "interpretation": "synthetic numerical control, graph samples from one specimen"
+}
